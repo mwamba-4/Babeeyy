@@ -1,0 +1,467 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#171326">
+<title>A Message for Mariam</title>
+
+<style>
+:root {
+  --purple: #8f6bff;
+  --background: #171326;
+  --card: #211b32;
+  --text: #f8f4ff;
+  --muted: #b9b0c9;
+  --pink: #d6b7ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+nav {
+  max-width: 1100px;
+  margin: auto;
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.logo {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  background: var(--purple);
+  border-radius: 50%;
+  font-size: 17px;
+  letter-spacing: 0;
+}
+
+.nav-note {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 55px 24px 80px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 45px;
+  align-items: center;
+}
+
+.eyebrow {
+  color: var(--pink);
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-family: Georgia, serif;
+  font-weight: normal;
+  font-size: clamp(48px, 7vw, 85px);
+  line-height: 1;
+  letter-spacing: -3px;
+  margin: 24px 0;
+}
+
+h1 em {
+  color: var(--pink);
+}
+
+.intro {
+  max-width: 470px;
+  color: #d0c9dc;
+  line-height: 1.9;
+  font-size: 16px;
+}
+
+.signature {
+  margin-top: 30px;
+  font-family: Georgia, serif;
+  font-style: italic;
+  color: var(--pink);
+  font-size: 21px;
+}
+
+.letter {
+  background: var(--card);
+  border: 1px solid #3a304c;
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 0 25px 70px #0003;
+}
+
+.letter-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.letter-label {
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.heart {
+  color: #e5a5d0;
+  font-size: 25px;
+}
+
+.letter h2 {
+  font: normal 32px Georgia, serif;
+  margin: 0 0 22px;
+}
+
+.letter p {
+  color: var(--muted);
+  line-height: 1.9;
+  font-size: 14px;
+  margin: 0 0 17px;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  transition: transform .2s, opacity .2s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  opacity: .9;
+}
+
+.reveal {
+  width: 100%;
+  border: none;
+  border-radius: 30px;
+  padding: 15px;
+  background: var(--purple);
+  color: white;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+.hidden-letter {
+  display: none;
+  border-top: 1px solid #3a304c;
+  margin-top: 22px;
+  padding-top: 22px;
+}
+
+.hidden-letter.open {
+  display: block;
+  animation: appear .4s ease;
+}
+
+.response {
+  margin-top: 100px;
+  text-align: center;
+}
+
+.response h2 {
+  font: normal clamp(30px, 5vw, 46px) Georgia, serif;
+  margin: 18px 0;
+}
+
+.response > p {
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 0 auto 30px;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.response-btn {
+  border-radius: 30px;
+  padding: 14px 20px;
+  background: transparent;
+  border: 1px solid #625575;
+  color: white;
+  font-size: 14px;
+}
+
+.response-btn.primary {
+  background: var(--purple);
+  border-color: var(--purple);
+}
+
+.feedback {
+  display: none;
+  max-width: 550px;
+  margin: 25px auto 0;
+  padding: 22px;
+  border: 1px solid #625575;
+  border-radius: 18px;
+  background: #ffffff08;
+  color: var(--text);
+  line-height: 1.8;
+}
+
+.feedback.show {
+  display: block;
+  animation: appear .35s ease;
+}
+
+footer {
+  text-align: center;
+  color: #a99ebd;
+  font-size: 12px;
+  padding: 0 20px 30px;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 760px) {
+  nav {
+    padding: 18px;
+  }
+
+  .nav-note {
+    display: none;
+  }
+
+  main {
+    padding: 35px 18px 60px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  h1 {
+    font-size: 59px;
+  }
+
+  .letter {
+    padding: 24px;
+  }
+
+  .response {
+    margin-top: 65px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+<nav>
+  <div class="brand">
+    <span class="logo">m.</span>
+    <span>A MESSAGE, WITH CARE</span>
+  </div>
+  <span class="nav-note">Written honestly · Meant respectfully</span>
+</nav>
+
+<main>
+  <section class="hero">
+    <div>
+      <div class="eyebrow">For Mariam</div>
+
+      <h1>
+        Some words<br>
+        deserve to be<br>
+        <em>said properly.</em>
+      </h1>
+
+      <p class="intro">
+        I know an apology cannot undo what happened or
+        ask you to forget how you felt. I want to take
+        responsibility, explain what I went through, and
+        speak honestly without making excuses or putting
+        pressure on you.
+      </p>
+
+      <div class="signature">— Mwamba</div>
+    </div>
+
+    <article class="letter">
+      <div class="letter-top">
+        <span class="letter-label">A personal note</span>
+        <span class="heart">♡</span>
+      </div>
+
+      <h2>Dear Mariam,</h2>
+
+      <p>
+        I'm sorry for the hurt, disappointment, or confusion
+        I caused you. You deserved clear communication from
+        me, and I understand that my actions may have made
+        you feel otherwise.
+      </p>
+
+      <p>
+        There's something important I also wanted you to
+        know. I was attacked by thugs, lost my phone during
+        that incident, and spent quite some time in hospital.
+        Everything became difficult to manage, and I wasn't
+        able to communicate the way I normally would.
+      </p>
+
+      <p>
+        I'm sharing this to explain my absence, not to use
+        what happened as an excuse or dismiss your feelings.
+        I should have communicated better when I could, and
+        I'm genuinely sorry for the impact this had on you.
+      </p>
+
+      <button
+        class="reveal"
+        id="readMore"
+        aria-expanded="false"
+        aria-controls="moreLetter"
+      >
+        Read the rest of my message ↓
+      </button>
+
+      <div class="hidden-letter" id="moreLetter">
+        <p>
+          You matter to me, and I didn't want silence or
+          misunderstanding to be the only thing left between
+          us. I can't demand forgiveness, a reply, or that
+          things return to how they were. I only hope you can
+          understand the situation a little better and know
+          that this apology is sincere.
+        </p>
+
+        <p>
+          If you're willing to talk, I'll listen properly and
+          give you space to say how you feel. If you need
+          distance, I'll respect that too.
+        </p>
+
+        <p>
+          Once again, I'm sorry, Mariam. I wish I had
+          handled things better.
+        </p>
+
+        <p><strong>— Mwamba</strong></p>
+      </div>
+    </article>
+  </section>
+
+  <section class="response">
+    <div class="eyebrow">No pressure, just honesty</div>
+
+    <h2>You can respond in your own time.</h2>
+
+    <p>
+      I don't expect you to make a decision right now.
+      If you want, choose the response that best describes
+      how you feel—or simply close this page and take your time.
+    </p>
+
+    <div class="buttons">
+      <button class="response-btn primary"
+        data-message="Thank you for being open to a conversation. I'll listen, and I won't assume that everything is fixed just because we're talking.">
+        I'm open to talking
+      </button>
+
+      <button class="response-btn"
+        data-message="I understand. Take all the time and space you need. I won't pressure you for a reply, and I'll respect your decision.">
+        I need some time
+      </button>
+
+      <button class="response-btn"
+        data-message="I respect your honesty and your choice. I'm sorry for the hurt I caused, and I won't pressure you to change your mind.">
+        I'm not ready to reconnect
+      </button>
+    </div>
+
+    <div class="feedback" id="feedback" role="status"
+      aria-live="polite"></div>
+  </section>
+</main>
+
+<footer>
+  This message is offered sincerely, with respect for your feelings and your choice.
+</footer>
+
+<script>
+const readMore = document.getElementById("readMore");
+const moreLetter = document.getElementById("moreLetter");
+
+readMore.addEventListener("click", function () {
+  const isOpen = moreLetter.classList.toggle("open");
+
+  readMore.setAttribute("aria-expanded", String(isOpen));
+
+  readMore.textContent = isOpen
+    ? "Show less ↑"
+    : "Read the rest of my message ↓";
+});
+
+document.querySelectorAll("[data-message]").forEach(function (button) {
+  button.addEventListener("click", function () {
+    const feedback = document.getElementById("feedback");
+
+    feedback.textContent = button.dataset.message;
+    feedback.classList.add("show");
+
+    feedback.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest"
+    });
+  });
+});
+</script>
+</body>
+</html>
